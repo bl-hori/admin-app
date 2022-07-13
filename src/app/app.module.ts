@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { MembersComponent } from './members/members.component';
 import { FormsModule } from '@angular/forms';
+import { MemberDetailComponent } from './member-detail/member-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MembersComponent,
+    MemberDetailComponent,
   ],
   imports: [
     BrowserModule,
