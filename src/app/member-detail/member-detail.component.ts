@@ -10,7 +10,7 @@ import { MemberService } from '../member.service';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-  @Input() member: Member | undefined;
+  @Input() member: Member | any;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +29,10 @@ export class MemberDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.memberService.updateMember(this.member).subscribe(() => this.goBack());
   }
 
 }
