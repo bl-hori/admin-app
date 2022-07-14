@@ -24,8 +24,11 @@ export class MemberService {
   }
 
   getMember(id: number): Observable<Member | undefined> {
-    this.messageService.add(`MemberService: 社員データ(id=${id})を取得しました`);
-    return of(MEMBERS.find(member => member.id === id));
+    const url = `${this.membersUrl}/${id}`;
+    return this.http.get<Member>(url).pipe(
+      tap(_ => this.log(`社員データ(id=${id})を取得しました`)),
+      catchError(this.handleError<Member>(`getmember id=${id}`)),
+    );
   }
 
   private log(message: string) {
